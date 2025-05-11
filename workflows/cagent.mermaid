@@ -1,0 +1,33 @@
+graph TD
+    A[Start] --> B[Initialize Agent]
+    B --> C[Load Excel Data]
+    C --> D[Parse & Process Data]
+    D --> E[Build Product Knowledge Base]
+    
+    E --> F[Wait for User Query]
+    
+    F --> G{Query Type?}
+    G -->|Product Specific| H[Product Detail Lookup]
+    G -->|Comparison| I[Compare Products]
+    G -->|Recommendation| J[Recommend Products]
+    G -->|Feature Analysis| K[Analyze Features]
+    G -->|Other| L[General Response]
+    
+    H --> M[Generate Response]
+    I --> M
+    J --> M
+    K --> M
+    L --> M
+    
+    M --> N{Follow-up Required?}
+    N -->|Yes| O[Request Clarification]
+    O --> F
+    N -->|No| P[End Conversation]
+    
+    classDef process fill:#a8d08d,stroke:#82b366,color:#000;
+    classDef decision fill:#f8cecc,stroke:#b85450,color:#000;
+    classDef io fill:#dae8fc,stroke:#6c8ebf,color:#000;
+    
+    class A,B,C,D,E,H,I,J,K,L,M,O,P process;
+    class G,N decision;
+    class F io;
